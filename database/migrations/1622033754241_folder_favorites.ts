@@ -1,22 +1,22 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class ProductStamps extends BaseSchema {
-  protected tableName = 'ProductStamp'
+export default class FolderFavorites extends BaseSchema {
+  protected tableName = 'FolderFavourite'
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('idProductStamp').primary()
+      table.increments('idFolderFavourite').primary()
       table
-      .integer('idProduct')
+      .integer('idFolder')
       .unsigned()
       .notNullable()
-      .references('Product.idProduct')
+      .references('Folder.idFolder')
       .onDelete('CASCADE')
       table
-      .integer('idStamp')
+      .integer('idFavourite')
       .unsigned()
       .notNullable()
-      .references('Stamp.idStamp')
+      .references('Favorite.idFavourite')
       .onDelete('CASCADE')
     })
   }

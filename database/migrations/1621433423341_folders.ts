@@ -7,8 +7,12 @@ export default class Folders extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('idFolder').primary()
       table.string('name').notNullable()
-      table.integer('idUser').notNullable()
-      table.integer('idFavorite').notNullable()
+      table
+      .integer('idUser')
+      .unsigned()
+      .notNullable()
+      .references('User.idUser')
+      .onDelete('CASCADE')
     })
   }
 

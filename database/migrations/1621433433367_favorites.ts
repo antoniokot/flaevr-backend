@@ -1,12 +1,17 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class Favorites extends BaseSchema {
-  protected tableName = 'Favorite'
+  protected tableName = 'Favourite'
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('idFavorite').primary()
-      table.integer('idProduct').notNullable()
+      table.increments('idFavourite').primary()
+      table
+      .integer('idProduct')
+      .unsigned()
+      .notNullable()
+      .references('Product.idProduct')
+      .onDelete('CASCADE')
     })
   }
 

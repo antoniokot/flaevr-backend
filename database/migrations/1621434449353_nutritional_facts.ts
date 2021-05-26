@@ -6,8 +6,18 @@ export default class NutritionalFacts extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('idNutritionalFacts').primary()
-      table.integer('idProduct').notNullable()
-      table.integer('idIngredient').notNullable()
+      table
+      .integer('idProduct')
+      .unsigned()
+      .notNullable()
+      .references('Product.idProduct')
+      .onDelete('CASCADE')
+      table
+      .integer('idIngredient')
+      .unsigned()
+      .notNullable()
+      .references('Ingredient.idIngredient')
+      .onDelete('CASCADE')
       table.double('amount').notNullable()
       table.string('serving').notNullable()
       table.double('dailyValue')
