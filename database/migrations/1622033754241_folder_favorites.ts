@@ -16,7 +16,7 @@ export default class FolderFavorites extends BaseSchema {
       .integer('idFavourite')
       .unsigned()
       .notNullable()
-      .references('Favorite.idFavourite')
+      .references('Favourite.idFavourite')
       .onDelete('CASCADE')
     })
   }

@@ -18,6 +18,7 @@ export default class Scanneds extends BaseSchema {
       .notNullable()
       .references('Product.idProduct')
       .onDelete('CASCADE')
+      table.timestamps()
     })
   }
 

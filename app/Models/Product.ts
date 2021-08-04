@@ -1,6 +1,6 @@
 import Scanned from './Scanned';
 import Favourite from './Favourite';
-import { BaseModel, belongsTo, column, BelongsTo, hasManyThrough, HasManyThrough, manyToMany, ManyToMany, hasOne, HasOne } from '@ioc:Adonis/Lucid/Orm';
+import { BaseModel, belongsTo, column, BelongsTo, manyToMany, ManyToMany, hasOne, HasOne } from '@ioc:Adonis/Lucid/Orm';
 import Stamp from './Stamp';
 import NutritionalFacts from './NutritionalFacts';
 
@@ -21,7 +21,7 @@ export default class Product extends BaseModel {
     relatedKey: 'idStamp',
     pivotRelatedForeignKey: 'idStamp',
   })
-  public favorites: ManyToMany<typeof Stamp>
+  public stamps: ManyToMany<typeof Stamp>
 
   @hasOne(() => NutritionalFacts)
   public nutritionalFacts: HasOne<typeof NutritionalFacts>

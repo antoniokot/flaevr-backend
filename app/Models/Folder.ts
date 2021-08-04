@@ -17,5 +17,5 @@ export default class Folder extends BaseModel {
     relatedKey: 'idFavourite',
     pivotRelatedForeignKey: 'idFavourite',
   })
-  public favorites: ManyToMany<typeof Favourite>
+  public favourites: ManyToMany<typeof Favourite>
 }

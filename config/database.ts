@@ -37,7 +37,7 @@ const databaseConfig: DatabaseConfig = {
       client: 'mssql',
       connection: {
         user: Env.get('MSSQL_USER'),
-        port: Env.get('MSSQL_PORT'),
+        port: parseInt(Env.get('MSSQL_PORT')),
         server: Env.get('MSSQL_SERVER'),
         password: Env.get('MSSQL_PASSWORD', ''),
         database: Env.get('MSSQL_DB_NAME'),
