@@ -20,6 +20,29 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
+Route.group(() => {
+  Route.get('', 'UsersController.list');
+  Route.get('/:id', 'UsersController.index');
+  Route.post('/post', 'UsersController.store');
+  Route.put('/put/:id', 'UsersController.alter');
+  Route.delete('/delete/:id', 'UsersController.remove');
 })
+.prefix('/users');
+
+Route.group(() => {
+  Route.get('/:idUser', 'FoldersController.list');
+  Route.get('/unique/:id', 'FoldersController.index');
+  Route.post('/post', 'FoldersController.store');
+  Route.put('/put/:id', 'FoldersController.alter');
+  Route.delete('/delete/:id', 'FoldersController.remove');
+})
+.prefix('/folders');
+
+Route.group(() => {
+  Route.get('', 'ProductsController.list');
+  Route.get('/:id', 'ProductsController.index');
+  Route.post('/post', 'ProductsController.store');
+  Route.put('/put/:id', 'ProductsController.alter');
+  Route.delete('/delete/:id', 'ProductsController.remove');
+})
+.prefix('/products');

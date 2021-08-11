@@ -8,6 +8,8 @@ export default class Products extends BaseSchema {
       table.increments('idProduct').primary()
       table.string('name').notNullable()
       table.string('barcode').notNullable()
+      table.string('pictureFileName')
+      table.binary('pictureData')
     })
   }
 

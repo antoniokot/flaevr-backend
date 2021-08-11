@@ -9,6 +9,8 @@ export default class Users extends BaseSchema {
       table.string('name').notNullable()
       table.string('password').notNullable()
       table.string('email').unique().notNullable()
+      table.string('pictureFileName')
+      table.binary('pictureData')
     })
   }
 
