@@ -39,6 +39,24 @@ Route.group(() => {
 .prefix('/folders');
 
 Route.group(() => {
+  Route.get('', 'FavouritesController.list');
+  Route.get('/:id', 'FavouritesController.index');
+  Route.post('/post', 'FavouritesController.store');
+  Route.put('/put/:id', 'FavouritesController.alter');
+  Route.delete('/delete/:id', 'FavouritesController.remove');
+})
+.prefix('/favourites');
+
+Route.group(() => {
+  Route.get('', 'FolderFavouritesController.list');
+  Route.get('/:id', 'FolderFavouritesController.index');
+  Route.post('/post', 'FolderFavouritesController.store');
+  Route.put('/put/:id', 'FolderFavouritesController.alter');
+  Route.delete('/delete/:id', 'FolderFavouritesController.remove');
+})
+.prefix('/foldersFavourites');
+
+Route.group(() => {
   Route.get('', 'ProductsController.list');
   Route.get('/:id', 'ProductsController.index');
   Route.post('/post', 'ProductsController.store');
@@ -46,3 +64,12 @@ Route.group(() => {
   Route.delete('/delete/:id', 'ProductsController.remove');
 })
 .prefix('/products');
+
+Route.group(() => {
+  Route.get('/:idUser', 'ScannedsController.list');
+  Route.get('/unique/:id', 'ScannedsController.index');
+  Route.post('/post', 'ScannedsController.store');
+  Route.put('/put/:id', 'ScannedsController.alter');
+  Route.delete('/delete/:id', 'ScannedsController.remove');
+})
+.prefix('/scanns');

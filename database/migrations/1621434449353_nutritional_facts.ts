@@ -12,6 +12,7 @@ export default class NutritionalFacts extends BaseSchema {
       .notNullable()
       .references('Product.idProduct')
       .onDelete('CASCADE')
+      table.string('serving').notNullable()
     })
   }
 

@@ -1,14 +1,12 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class Ingredients extends BaseSchema {
-  protected tableName = 'Ingredient'
+export default class Nutrients extends BaseSchema {
+  protected tableName = 'Nutrient'
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('idIngredient').primary()
+      table.increments('idNutrient')
       table.string('name').notNullable()
-      table.integer('isAllergenic').notNullable()
-      table.integer('isVegan').notNullable()
     })
   }
 

@@ -1,16 +1,16 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class NutritionalFactsIngredients extends BaseSchema {
-  protected tableName = 'NutritionalFactsIngredient'
+export default class ProductIngredients extends BaseSchema {
+  protected tableName = 'ProductIngredient'
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('idNutritionalFactsIngredient').primary()
+      table.increments('idProductIngredient')
       table
-      .integer('idNutritionalFacts')
+      .integer('idProduct')
       .unsigned()
       .notNullable()
-      .references('NutritionalFacts.idNutritionalFacts')
+      .references('Product.idProduct')
       .onDelete('CASCADE')
       table
       .integer('idIngredient')
@@ -18,9 +18,6 @@ export default class NutritionalFactsIngredients extends BaseSchema {
       .notNullable()
       .references('Ingredient.idIngredient')
       .onDelete('CASCADE')
-      table.double('amount').notNullable()
-      table.string('serving').notNullable()
-      table.double('dailyValue')
     })
   }
 
