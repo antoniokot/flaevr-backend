@@ -48,8 +48,8 @@ Route.group(() => {
 .prefix('/favourites');
 
 Route.group(() => {
-  Route.get('', 'FolderFavouritesController.list');
-  Route.get('/:id', 'FolderFavouritesController.index');
+  Route.get('/:idFolder', 'FolderFavouritesController.list');
+  Route.get('/unique/:id', 'FolderFavouritesController.index');
   Route.post('/post', 'FolderFavouritesController.store');
   Route.put('/put/:id', 'FolderFavouritesController.alter');
   Route.delete('/delete/:id', 'FolderFavouritesController.remove');
@@ -59,6 +59,7 @@ Route.group(() => {
 Route.group(() => {
   Route.get('', 'ProductsController.list');
   Route.get('/:id', 'ProductsController.index');
+  Route.get('/getByBarcode/:barcode', 'ProductsController.getByBarcode');
   Route.post('/post', 'ProductsController.store');
   Route.put('/put/:id', 'ProductsController.alter');
   Route.delete('/delete/:id', 'ProductsController.remove');
@@ -73,3 +74,66 @@ Route.group(() => {
   Route.delete('/delete/:id', 'ScannedsController.remove');
 })
 .prefix('/scanns');
+
+Route.group(() => {
+  Route.get('/', 'StampsController.list');
+  Route.get('/:id', 'StampsController.index');
+  Route.post('/post', 'StampsController.store');
+  Route.put('/put/:id', 'StampsController.alter');
+  Route.delete('/delete/:id', 'StampsController.remove');
+})
+.prefix('/stamps');
+
+Route.group(() => {
+  Route.get('/:idProduct', 'ProductStampsController.list');
+  Route.get('/unique/:id', 'ProductStampsController.index');
+  Route.post('/post', 'ProductStampsController.store');
+  Route.put('/put/:id', 'ProductStampsController.alter');
+  Route.delete('/delete/:id', 'ProductStampsController.remove');
+})
+.prefix('/productsStamps');
+
+Route.group(() => {
+  Route.get('', 'IngredientsController.list');
+  Route.get('/:id', 'IngredientsController.index');
+  Route.post('/post', 'IngredientsController.store');
+  Route.put('/put/:id', 'IngredientsController.alter');
+  Route.delete('/delete/:id', 'IngredientsController.remove');
+})
+.prefix('/ingredients');
+
+Route.group(() => {
+  Route.get('', 'ProductIngredientsController.list');
+  Route.get('/:id', 'ProductIngredientsController.index');
+  Route.post('/post', 'ProductIngredientsController.store');
+  Route.put('/put/:id', 'ProductIngredientsController.alter');
+  Route.delete('/delete/:id', 'ProductIngredientsController.remove');
+})
+.prefix('/productsIngredients');
+
+Route.group(() => {
+  Route.get('', 'NutritionalFactsController.list');
+  Route.get('/:id', 'NutritionalFactsController.index');
+  Route.post('/post', 'NutritionalFactsController.store');
+  Route.put('/put/:id', 'NutritionalFactsController.alter');
+  Route.delete('/delete/:id', 'NutritionalFactsController.remove');
+})
+.prefix('/nutritionalFacts');
+
+Route.group(() => {
+  Route.get('', 'NutrientsController.list');
+  Route.get('/:id', 'NutrientsController.index');
+  Route.post('/post', 'NutrientsController.store');
+  Route.put('/put/:id', 'NutrientsController.alter');
+  Route.delete('/delete/:id', 'NutrientsController.remove');
+})
+.prefix('/nutrients');
+
+Route.group(() => {
+  Route.get('/:idProduct', 'NutrientNutritionalFactsController.list');
+  Route.get('/unique/:id', 'NutrientNutritionalFactsController.index');
+  Route.post('/post', 'NutrientNutritionalFactsController.store');
+  Route.put('/put/:id', 'NutrientNutritionalFactsController.alter');
+  Route.delete('/delete/:id', 'NutrientNutritionalFactsController.remove');
+})
+.prefix('/nutrientsNutritionalFacts');

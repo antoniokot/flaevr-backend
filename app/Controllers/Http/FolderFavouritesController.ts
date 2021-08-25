@@ -5,11 +5,14 @@ import Database from '@ioc:Adonis/Lucid/Database';
 export default class FolderFavouritesController {
 
   public async list(ctx: HttpContextContract) {
+
+    const idFolder = ctx.request.params().idFolder;
     
     const folderFavourites = await Database
       .query()
       .from('FolderFavourite')
-      .select('*');
+      .select('*')
+      .where('idFolder', idFolder);
     
     return folderFavourites;
   }

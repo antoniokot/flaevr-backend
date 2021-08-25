@@ -26,6 +26,19 @@ export default class ProductsController {
     return product;
   }
 
+  public async getByBarcode(ctx: HttpContextContract) {
+
+    const barcode = ctx.request.params().barcode;
+
+    const product = await Database
+      .query()
+      .from('Product')
+      .select('*')
+      .where('barcode', barcode);
+
+    return product;
+  }
+
   public async store(ctx: HttpContextContract) {
 
     const body = ctx.request.body();
@@ -57,7 +70,7 @@ export default class ProductsController {
         // pictureFileName: body.pictureFileName,
         // pictureData: body.pictureData,
       }, ['idProduct', 'name', 'barcode', 'pictureFileName', 'pictureData']
-      );
+    );
 
     return product;
   }
