@@ -11,6 +11,7 @@ export default class Users extends BaseSchema {
       table.string('email').unique().notNullable()
       table.string('pictureFileName')
       table.binary('pictureData')
+      table.string('remember_me_token')
     })
   }
 

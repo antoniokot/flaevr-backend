@@ -1,6 +1,7 @@
 import Hash from '@ioc:Adonis/Core/Hash'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database';
+import User from 'App/Models/User';
 
 export default class UsersController {
 
@@ -16,7 +17,12 @@ export default class UsersController {
 
   public async index(ctx: HttpContextContract) {
 
-    const id = ctx.request.params().id;
+    const auth = ctx.auth;
+    const request = ctx.request;
+
+    const id = request.params().id;
+
+    await auth.use('web').authenticate();
 
     const user = await Database
       .query()
@@ -25,6 +31,27 @@ export default class UsersController {
       .where('idUser', id);
 
     return user;
+  }
+
+  public async login(ctx: HttpContextContract) {
+
+    const auth = ctx.auth;
+    const request = ctx.request;
+
+    const { email, password } = request.body();
+
+    const user = await auth.use('web').attempt(email, password);
+
+    return user;
+  }
+
+  public async logout(ctx: HttpContextContract) {
+
+    const auth = ctx.auth;
+    const request = ctx.request;
+
+    if(await auth.use('web').authenticate())
+      await auth.use('web').logout();
   }
 
   public async store(ctx: HttpContextContract) {
