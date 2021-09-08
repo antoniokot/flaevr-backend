@@ -22,7 +22,7 @@ export default class UsersController {
 
     const id = request.params().id;
 
-    await auth.use('web').authenticate();
+    // await auth.use('web').authenticate();
 
     const user = await Database
       .query()
