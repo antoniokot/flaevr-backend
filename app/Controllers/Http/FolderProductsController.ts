@@ -2,47 +2,47 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Hash from '@ioc:Adonis/Core/Hash'
 import Database from '@ioc:Adonis/Lucid/Database';
 
-export default class FolderFavouritesController {
+export default class FolderProductsController {
 
   public async list(ctx: HttpContextContract) {
 
     const idFolder = ctx.request.params().idFolder;
     
-    const folderFavourites = await Database
+    const folderProducts = await Database
       .query()
-      .from('FolderFavourite')
+      .from('FolderProduct')
       .select('*')
       .where('idFolder', idFolder);
     
-    return folderFavourites;
+    return folderProducts;
   }
 
   public async index(ctx: HttpContextContract) {
 
     const id = ctx.request.params().id;
 
-    const folderFavourites = await Database
+    const folderProducts = await Database
       .query()
-      .from('FolderFavourite')
+      .from('FolderProduct')
       .select('*')
-      .where('idFolderFavourite', id);
+      .where('idFolderProduct', id);
 
-    return folderFavourites;
+    return folderProducts;
   }
 
   public async store(ctx: HttpContextContract) {
 
     const body = ctx.request.body();
 
-    const folderFavourite = await Database
-      .table('FolderFavourite')
-      .returning(['idFolderFavourite', 'idFolder', 'idFavourite'])
+    const folderProduct = await Database
+      .table('FolderProduct')
+      .returning(['idFolderProduct', 'idFolder', 'idProduct'])
       .insert({
         idFolder: body.idFolder,
-        idFavourite: body.idFavourite,
+        idProduct: body.idProduct,
       });
 
-    return folderFavourite;
+    return folderProduct;
   }
 
   public async alter(ctx: HttpContextContract) {
@@ -50,27 +50,27 @@ export default class FolderFavouritesController {
     const id = ctx.request.params().id;
     const body = ctx.request.body();
 
-    const folderFavourite = Database
-      .from('FolderFavourite')
-      .where('idFolderFavourite', id)
+    const folderProduct = Database
+      .from('FolderProduct')
+      .where('idFolderProduct', id)
       .update({
         idFolder: body.idFolder,
-        idFavourite: body.idFavourite,
-      }, ['idFolderFavourite', 'idFolder', 'idFavourite']
+        idProduct: body.idProduct,
+      }, ['idFolderProduct', 'idFolder', 'idProduct']
       );
 
-    return folderFavourite;
+    return folderProduct;
   }
 
   public async remove(ctx: HttpContextContract) {
 
     const id = ctx.request.params().id;
 
-    const folderFavourite = Database
-      .from('FolderFavourite')
-      .where('idFolderFavourite', id)
+    const folderProduct = Database
+      .from('FolderProduct')
+      .where('idFolderProduct', id)
       .delete();
 
-    return folderFavourite;
+    return folderProduct;
   }
 }

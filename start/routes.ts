@@ -50,13 +50,13 @@ Route.group(() => {
 .prefix('/favourites');
 
 Route.group(() => {
-  Route.get('/:idFolder', 'FolderFavouritesController.list');
-  Route.get('/unique/:id', 'FolderFavouritesController.index');
-  Route.post('/post', 'FolderFavouritesController.store');
-  Route.put('/put/:id', 'FolderFavouritesController.alter');
-  Route.delete('/delete/:id', 'FolderFavouritesController.remove');
+  Route.get('/:idFolder', 'FolderProductsController.list');
+  Route.get('/unique/:id', 'FolderProductsController.index');
+  Route.post('/post', 'FolderProductsController.store');
+  Route.put('/put/:id', 'FolderProductsController.alter');
+  Route.delete('/delete/:id', 'FolderProductsController.remove');
 })
-.prefix('/foldersFavourites');
+.prefix('/folderProducts');
 
 Route.group(() => {
   Route.get('', 'ProductsController.list');

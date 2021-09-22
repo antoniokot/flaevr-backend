@@ -1,5 +1,6 @@
 import User from './User';
 import Favourite from './Favourite';
+import Product from './Product';
 
 import { BaseModel, column, belongsTo, BelongsTo, manyToMany, ManyToMany } from '@ioc:Adonis/Lucid/Orm';
 
@@ -10,12 +11,12 @@ export default class Folder extends BaseModel {
   @belongsTo(() => User)
   public user: BelongsTo<typeof User>
 
-  @manyToMany(() => Favourite, {
-    pivotTable: 'FolderFavourite',
+  @manyToMany(() => Product, {
+    pivotTable: 'FolderProduct',
     localKey: 'idFolder',
     pivotForeignKey: 'idFolder',
-    relatedKey: 'idFavourite',
-    pivotRelatedForeignKey: 'idFavourite',
+    relatedKey: 'idProduct',
+    pivotRelatedForeignKey: 'idProduct',
   })
-  public favourites: ManyToMany<typeof Favourite>
+  public products: ManyToMany<typeof Product>
 }

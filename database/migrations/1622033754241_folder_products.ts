@@ -1,11 +1,11 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class FolderFavorites extends BaseSchema {
-  protected tableName = 'FolderFavourite'
+  protected tableName = 'FolderProduct'
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('idFolderFavourite').primary()
+      table.increments('idFolderProduct').primary()
       table
       .integer('idFolder')
       .unsigned()
@@ -13,10 +13,10 @@ export default class FolderFavorites extends BaseSchema {
       .references('Folder.idFolder')
       .onDelete('CASCADE')
       table
-      .integer('idFavourite')
+      .integer('idProduct')
       .unsigned()
       .notNullable()
-      .references('Favourite.idFavourite')
+      .references('Product.idProduct')
       .onDelete('CASCADE')
     })
   }
