@@ -18,6 +18,7 @@ export default class NutrientNutritionalFactsController {
       .select('Product.name as product')
       .select('Nutrient.name as nutrient')
       .select('NutrientNutritionalFacts.value')
+      .select('NutrientNutritionalFacts.dailyValue')
       .where('Product.idProduct', idProduct)
     
     return nutrientNutritionalFacts;
@@ -42,11 +43,12 @@ export default class NutrientNutritionalFactsController {
 
     const nutrientNutritionalFacts = await Database
       .table('NutrientNutritionalFacts')
-      .returning(['idNutrientNutritionalFacts', 'idNutrient', 'idNutritionalFacts', 'value'])
+      .returning(['idNutrientNutritionalFacts', 'idNutrient', 'idNutritionalFacts', 'value', 'dailyValue'])
       .insert({
         idNutrient: body.idNutrient,
         idNutritionalFacts: body.idNutritionalFacts,
         value: body.value,
+        dailyValue: body.dailyValue,
       });
 
     return nutrientNutritionalFacts;
@@ -64,7 +66,8 @@ export default class NutrientNutritionalFactsController {
         idNutrient: body.idNutrient,
         idNutritionalFacts: body.idNutritionalFacts,
         value: body.value,
-      }, ['idNutrientNutritionalFacts', 'idNutrient', 'idNutritionalFacts', 'value']
+        dailyValue: body.dailyValue,
+      }, ['idNutrientNutritionalFacts', 'idNutrient', 'idNutritionalFacts', 'value', 'dailyValue']
       );
 
     return nutrientNutritionalFacts;
