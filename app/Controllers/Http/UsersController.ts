@@ -60,13 +60,12 @@ export default class UsersController {
 
     const user = await Database
       .table('User')
-      .returning(['idUser', 'name', 'password', 'email', 'pictureFileName', 'pictureData'])
+      .returning(['idUser', 'name', 'password', 'email', 'avatar'])
       .insert({
         name: body.name,
         password: await Hash.make(body.password),
         email: body.email,
-        // pictureFileName: body.pictureFileName,
-        // pictureData: body.pictureData,
+        avatar: body.avatar,
       });
 
     return user;
@@ -84,9 +83,8 @@ export default class UsersController {
         name: body.name,
         password: await Hash.make(body.password),
         email: body.email,
-        // pictureFileName: body.pictureFileName,
-        // pictureData: body.pictureData,
-      }, ['idUser', 'name', 'password', 'email', 'pictureFileName', 'pictureData']
+        avatar: body.avatar,
+      }, ['idUser', 'name', 'password', 'email', 'avatar']
       );
 
     return user;

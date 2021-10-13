@@ -45,12 +45,11 @@ export default class ProductsController {
 
     const product = await Database
       .table('Product')
-      .returning(['idProduct', 'name', 'barcode', 'pictureFileName', 'pictureData'])
+      .returning(['idProduct', 'name', 'barcode', 'pictureUrl'])
       .insert({
         name: body.name,
         barcode: body.barcode,
-        // pictureFileName: body.pictureFileName,
-        // pictureData: body.pictureData,
+        pictureUrl: body.pictureUrl
       });
 
     return product;
@@ -67,9 +66,8 @@ export default class ProductsController {
       .update({
         name: body.name,
         barcode: body.barcode,
-        // pictureFileName: body.pictureFileName,
-        // pictureData: body.pictureData,
-      }, ['idProduct', 'name', 'barcode', 'pictureFileName', 'pictureData']
+        pictureUrl: body.pictureUrl
+      }, ['idProduct', 'name', 'barcode', 'pictureUrl']
     );
 
     return product;
