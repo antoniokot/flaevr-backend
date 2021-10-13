@@ -39,6 +39,25 @@ export default class ProductsController {
     return product;
   }
 
+  public async getProductsByIdFolder(ctx: HttpContextContract) {
+    const idFolder = ctx.request.params().idFolder;
+
+    const products = await Database
+    .query()
+    .from('Product')
+    .join('FolderProduct', 'FolderProduct.idProduct', '=', 'Product.idProduct')
+    .join('Folder', 'Folder.idFolder', '=', 'FolderProduct.idFolder')
+    .select([
+      'Product.idProduct as idProduct', 
+      'Product.name as name', 
+      'Product.barcode as barcode', 
+      'Product.pictureUrl as pictureUrl'
+    ])
+    .where('Folder.idFolder', idFolder);
+
+    return products;
+  }
+
   public async store(ctx: HttpContextContract) {
 
     const body = ctx.request.body();

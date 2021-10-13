@@ -61,7 +61,8 @@ Route.group(() => {
 Route.group(() => {
   Route.get('', 'ProductsController.list');
   Route.get('/:id', 'ProductsController.index');
-  Route.get('/getByBarcode/:barcode', 'ProductsController.getByBarcode');
+  Route.get('/barcode/:barcode', 'ProductsController.getByBarcode');
+  Route.get('/folder/:idFolder', 'ProductsController.getProductsByIdFolder')
   Route.post('/post', 'ProductsController.store');
   Route.put('/put/:id', 'ProductsController.alter');
   Route.delete('/delete/:id', 'ProductsController.remove');
