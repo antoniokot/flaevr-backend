@@ -39,7 +39,7 @@ export default class ScannedsController {
       .from('Scanned')
       .select('*')
       .where('idUser', idUser)
-      .orderBy('idScanned');
+      .orderBy('idScanned', 'desc');
 
     return recents;
   }
