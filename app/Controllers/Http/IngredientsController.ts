@@ -33,11 +33,21 @@ export default class IngredientsController {
 
     const ingredient = await Database
       .table('Ingredient')
-      .returning(['idIngredient', 'name', 'isAllergenic', 'isVegan'])
+      .returning(['idIngredient', 'name', 'isVegan',
+                  'hasMilk', 'hasEgg', 'hasGluten',
+                  'hasSeafood', 'hasFish', 'hasSugar', 
+                  'hasSoy', 'hasNuts'])
       .insert({
         name: body.name,
-        isAllergenic: body.isAllergenic,
         isVegan: body.isVegan,
+        hasMilk: body.hasMilk,
+        hasEgg: body.hasEgg,
+        hasGluten: body.hasGluten,
+        hasSeafood: body.hasSeafood,
+        hasFish: body.hasFish,
+        hasSugar: body.hasSugar,
+        hasSoy: body.hasSoy,
+        hasNuts: body.hasNuts,
       });
 
     return ingredient;
@@ -53,9 +63,19 @@ export default class IngredientsController {
       .where('idIngredient', id)
       .update({
         name: body.name,
-        isAllergenic: body.isAllergenic,
         isVegan: body.isVegan,
-      }, ['idIngredient', 'name', 'isAllergenic', 'isVegan']
+        hasMilk: body.hasMilk,
+        hasEgg: body.hasEgg,
+        hasGluten: body.hasGluten,
+        hasSeafood: body.hasSeafood,
+        hasFish: body.hasFish,
+        hasSugar: body.hasSugar,
+        hasSoy: body.hasSoy,
+        hasNuts: body.hasNuts,
+      }, ['idIngredient', 'name', 'isVegan',
+          'hasMilk', 'hasEgg', 'hasGluten',
+          'hasSeafood', 'hasFish', 'hasSugar', 
+          'hasSoy', 'hasNuts']
     );
 
     return ingredient;
