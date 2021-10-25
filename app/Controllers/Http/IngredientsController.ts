@@ -27,6 +27,32 @@ export default class IngredientsController {
     return ingredient;
   }
 
+  public async getIngredientsByIdProduct(ctx: HttpContextContract) {
+    const idProduct = ctx.request.params().idProduct;
+
+    const ingredients = await Database
+    .query()
+    .from('Ingredient')
+    .join('ProductIngredient', 'Ingredient.idIngredient', '=', 'ProductIngredient.idIngredient')
+    .join('Product', 'ProductIngredient.idProduct', '=', 'Product.idProduct')
+    .select([
+      'Ingredient.idIngredient as idIngredient', 
+      'Ingredient.name as name', 
+      'Ingredient.isVegan as isVegan', 
+      'Ingredient.hasMilk as hasMilk', 
+      'Ingredient.hasEgg as hasEgg', 
+      'Ingredient.hasGluten as hasGluten', 
+      'Ingredient.hasSeaFood as hasSeaFood', 
+      'Ingredient.hasFish as hasFish',
+      'Ingredient.hasSugar as hasSugar',
+      'Ingredient.hasSoy as hasSoy',
+      'Ingredient.hasNuts as hasNuts',
+    ])
+    .where('Product.idProduct', idProduct);
+
+    return ingredients;
+  }
+
   public async store(ctx: HttpContextContract) {
 
     const body = ctx.request.body();

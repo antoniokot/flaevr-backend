@@ -100,6 +100,7 @@ Route.group(() => {
 Route.group(() => {
   Route.get('', 'IngredientsController.list');
   Route.get('/:id', 'IngredientsController.index');
+  Route.get('/product/:idProduct', 'IngredientsController.getIngredientsByIdProduct');
   Route.post('/post', 'IngredientsController.store');
   Route.put('/put/:id', 'IngredientsController.alter');
   Route.delete('/delete/:id', 'IngredientsController.remove');
