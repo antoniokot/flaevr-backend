@@ -90,6 +90,22 @@ export default class UsersController {
     return user;
   }
 
+  public async changeAvatar(ctx: HttpContextContract) {
+
+    const id = ctx.request.params().id;
+    const body = ctx.request.body();
+
+    const user = Database
+      .from('User')
+      .where('idUser', id)
+      .update({
+        avatar: body.avatar,
+      }, ['idUser', 'name', 'password', 'email', 'avatar']
+      );
+
+    return user;
+  }
+
   public async remove(ctx: HttpContextContract) {
 
     const id = ctx.request.params().id;

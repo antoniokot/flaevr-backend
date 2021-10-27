@@ -27,6 +27,7 @@ Route.group(() => {
   Route.post('/logout', 'UsersController.logout')
   Route.post('/post', 'UsersController.store');
   Route.put('/put/:id', 'UsersController.alter');
+  Route.put('/avatar/:id', 'UsersController.changeAvatar');
   Route.delete('/delete/:id', 'UsersController.remove');
 })
 .prefix('/users');
