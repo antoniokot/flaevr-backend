@@ -30,20 +30,6 @@ export default class ScannedsController {
     return scann;
   }
 
-  public async recents(ctx: HttpContextContract) {
-
-    const idUser = ctx.request.params().idUser;
-
-    const recents = await Database
-      .query()
-      .from('Scanned')
-      .select('*')
-      .where('idUser', idUser)
-      .orderBy('idScanned', 'desc');
-
-    return recents;
-  }
-
   public async store(ctx: HttpContextContract) {
 
     const body = ctx.request.body();

@@ -58,6 +58,29 @@ export default class ProductsController {
     return products;
   }
 
+  public async recents(ctx: HttpContextContract) {
+
+    const idUser = ctx.request.params().idUser;
+
+    const recents = await Database
+      .query()
+      .from('Product')
+      .join('Scanned', 'Scanned.idProduct', '=', 'Product.idProduct')
+      .join('User', 'User.idUser', '=', 'Scanned.idUser')
+      .select([
+        'Scanned.idScanned as idScanned',
+        'User.idUser as idUser',
+        'Product.idProduct as idProduct',
+        'Product.name as name',
+        'Product.barcode as barcode',
+        'Product.pictureUrl as pictureUrl',
+      ])
+      .where('User.idUser', idUser)
+      .orderBy('idScanned', 'desc');
+
+    return recents;
+  }
+
   public async store(ctx: HttpContextContract) {
 
     const body = ctx.request.body();

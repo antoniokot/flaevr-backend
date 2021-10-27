@@ -62,7 +62,8 @@ Route.group(() => {
   Route.get('', 'ProductsController.list');
   Route.get('/:id', 'ProductsController.index');
   Route.get('/barcode/:barcode', 'ProductsController.getByBarcode');
-  Route.get('/folder/:idFolder', 'ProductsController.getProductsByIdFolder')
+  Route.get('/folder/:idFolder', 'ProductsController.getProductsByIdFolder');
+  Route.get('/user/:idUser', 'ProductsController.recents');
   Route.post('/post', 'ProductsController.store');
   Route.put('/put/:id', 'ProductsController.alter');
   Route.delete('/delete/:id', 'ProductsController.remove');
@@ -72,7 +73,6 @@ Route.group(() => {
 Route.group(() => {
   Route.get('/:idUser', 'ScannedsController.list');
   Route.get('/unique/:id', 'ScannedsController.index');
-  Route.get('/user/:idUser', 'ScannedsController.recents');
   Route.post('/post', 'ScannedsController.store');
   Route.put('/put/:id', 'ScannedsController.alter');
   Route.delete('/delete/:id', 'ScannedsController.remove');
