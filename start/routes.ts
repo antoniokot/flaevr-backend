@@ -103,6 +103,7 @@ Route.group(() => {
   Route.get('', 'IngredientsController.list');
   Route.get('/:id', 'IngredientsController.index');
   Route.get('/product/:idProduct', 'IngredientsController.getIngredientsByIdProduct');
+  Route.get('/product/allergenics/:idProduct', 'IngredientsController.getAllergenicsByIdProduct');
   Route.post('/post', 'IngredientsController.store');
   Route.put('/put/:id', 'IngredientsController.alter');
   Route.delete('/delete/:id', 'IngredientsController.remove');
@@ -137,8 +138,9 @@ Route.group(() => {
 .prefix('/nutrients');
 
 Route.group(() => {
-  Route.get('/:idProduct', 'NutrientNutritionalFactsController.list');
+  Route.get('', 'NutrientNutritionalFactsController.list')
   Route.get('/unique/:id', 'NutrientNutritionalFactsController.index');
+  Route.get('/product/:idProduct', 'NutrientNutritionalFactsController.getAllNutrientNutrionalFactsByIdProduct');
   Route.post('/post', 'NutrientNutritionalFactsController.store');
   Route.put('/put/:id', 'NutrientNutritionalFactsController.alter');
   Route.delete('/delete/:id', 'NutrientNutritionalFactsController.remove');

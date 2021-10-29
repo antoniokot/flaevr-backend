@@ -3,8 +3,32 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
 import Database from '@ioc:Adonis/Lucid/Database';
 
 export default class NutrientNutritionalFactsController {
-  
+
   public async list(ctx: HttpContextContract) {
+    
+    const nutrientNutritionalFacts = await Database
+    .query()
+    .from('NutrientNutritionalFacts')
+    .select('*');
+    
+    return nutrientNutritionalFacts;
+  }
+  
+  
+  public async index(ctx: HttpContextContract) {
+    
+    const id = ctx.request.params().id;
+    
+    const nutrientNutritionalFacts = await Database
+    .query()
+    .from('NutrientNutritionalFacts')
+    .select('*')
+    .where('idNutrientNutritionalFacts', id);
+    
+    return nutrientNutritionalFacts;
+  }
+
+  public async getAllNutrientNutrionalFactsByIdProduct(ctx: HttpContextContract) {
 
     const idProduct = ctx.request.params().idProduct;
     
@@ -21,19 +45,6 @@ export default class NutrientNutritionalFactsController {
       .select('NutrientNutritionalFacts.dailyValue')
       .where('Product.idProduct', idProduct)
     
-    return nutrientNutritionalFacts;
-  }
-
-  public async index(ctx: HttpContextContract) {
-
-    const id = ctx.request.params().id;
-
-    const nutrientNutritionalFacts = await Database
-      .query()
-      .from('NutrientNutritionalFacts')
-      .select('*')
-      .where('idNutrientNutritionalFacts', id);
-
     return nutrientNutritionalFacts;
   }
 
