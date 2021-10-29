@@ -27,6 +27,22 @@ export default class StampsController {
     return stamp;
   }
 
+  public async getStampsByIdProduct(ctx: HttpContextContract) {
+
+    const idProduct = ctx.request.params().idProduct;
+
+    const stamps = await Database
+      .query()
+      .from('Stamp')
+      .join('ProductStamp', 'ProductStamp.idStamp', '=', 'Stamp.idStamp')
+      .join('Product', 'ProductStamp.idProduct', '=', 'Product.idProduct')
+      .select('Stamp.idStamp as idStamp')
+      .select('Stamp.name as name') 
+      .where('Product.idProduct', idProduct);
+
+    return stamps;
+  }
+
   public async store(ctx: HttpContextContract) {
 
     const body = ctx.request.body();

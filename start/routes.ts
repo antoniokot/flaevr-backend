@@ -83,6 +83,7 @@ Route.group(() => {
 Route.group(() => {
   Route.get('/', 'StampsController.list');
   Route.get('/:id', 'StampsController.index');
+  Route.get('/product/:idProduct', 'StampsController.getStampsByIdProduct');
   Route.post('/post', 'StampsController.store');
   Route.put('/put/:id', 'StampsController.alter');
   Route.delete('/delete/:id', 'StampsController.remove');
