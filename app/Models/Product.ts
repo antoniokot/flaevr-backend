@@ -4,6 +4,7 @@ import { BaseModel, belongsTo, column, BelongsTo, manyToMany, ManyToMany, hasOne
 import Stamp from './Stamp';
 import NutritionalFacts from './NutritionalFacts';
 import Ingredient from './Ingredient';
+import Score from './Score';
 
 export default class Product extends BaseModel {
   @column({ isPrimary: true })
@@ -35,4 +36,7 @@ export default class Product extends BaseModel {
 
   @hasOne(() => NutritionalFacts)
   public nutritionalFacts: HasOne<typeof NutritionalFacts>
+
+  @hasOne(() => Score)
+  public score: HasOne<typeof Score>
 }

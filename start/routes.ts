@@ -72,6 +72,14 @@ Route.group(() => {
 .prefix('/products');
 
 Route.group(() => {
+  Route.get('', 'ScoresController.list');
+  Route.get('/:id', 'ScoresController.index');
+  Route.post('/post', 'ScoresController.store');
+  Route.delete('/:id', 'ScoresController.remove');
+})
+.prefix('/scores')
+
+Route.group(() => {
   Route.get('/:idUser', 'ScannedsController.list');
   Route.get('/unique/:id', 'ScannedsController.index');
   Route.post('/post', 'ScannedsController.store');
