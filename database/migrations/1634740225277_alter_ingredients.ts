@@ -6,8 +6,8 @@ export default class AlterIngredients extends BaseSchema {
   public async up () {
     this.schema.alterTable(this.tableName, (table) => {
       // table.dropColumn('isAllergenic') already droped
-      table.dropColumn('created_at')
-      table.dropColumn('updated_at')
+      // table.dropColumn('created_at')
+      // table.dropColumn('updated_at')
       // table.integer('hasMilk')
       // table.integer('hasEgg')
       // table.integer('hasGluten')

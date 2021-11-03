@@ -33,14 +33,17 @@ const databaseConfig: DatabaseConfig = {
     | npm i mssql
     |
     */
-    mssql: {
-      client: 'mssql',
+    pg: {
+      client: 'pg',
       connection: {
-        user: Env.get('MSSQL_USER'),
-        port: parseInt(Env.get('MSSQL_PORT')),
-        server: Env.get('MSSQL_SERVER'),
-        password: Env.get('MSSQL_PASSWORD', ''),
-        database: Env.get('MSSQL_DB_NAME'),
+        host: Env.get('PG_HOST'),
+        port: Env.get('PG_PORT'),
+        user: Env.get('PG_USER'),
+        password: Env.get('PG_PASSWORD', ''),
+        database: Env.get('PG_DB_NAME'),
+        ssl: {
+          rejectUnauthorized: false,
+        },
       },
       migrations: {
         naturalSort: true,
