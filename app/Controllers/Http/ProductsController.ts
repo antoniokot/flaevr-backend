@@ -81,6 +81,27 @@ export default class ProductsController {
     return recents;
   }
 
+  public async getAllScannedByIdStamp(ctx: HttpContextContract) {
+
+    const idStamp = ctx.request.params().idStamp;
+
+    const scanneds = await Database
+      .query()
+      .from('Product')
+      .join('Scanned', 'Scanned.idProduct', '=', 'Product.idProduct')
+      .join('ProductStamp', 'ProductStamp.idProduct', '=', 'Product.idProduct')
+      .join('Stamp', 'Stamp.idStamp', '=', 'ProductStamp.idStamp')
+      .select([
+        'Product.idProduct as idProduct',
+        'Product.name as name',
+        'Product.barcode as barcode',
+        'Product.pictureUrl as pictureUrl',
+      ])
+      .where('Stamp.idStamp', idStamp);
+
+    return scanneds;
+  }
+
   public async store(ctx: HttpContextContract) {
 
     const body = ctx.request.body();

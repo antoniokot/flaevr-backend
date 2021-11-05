@@ -65,6 +65,7 @@ Route.group(() => {
   Route.get('/barcode/:barcode', 'ProductsController.getByBarcode');
   Route.get('/folder/:idFolder', 'ProductsController.getProductsByIdFolder');
   Route.get('/user/:idUser', 'ProductsController.recents');
+  Route.get('/stamp/:idStamp', 'ProductsController.getAllScannedByIdStamp');
   Route.post('/post', 'ProductsController.store');
   Route.put('/put/:id', 'ProductsController.alter');
   Route.delete('/delete/:id', 'ProductsController.remove');
