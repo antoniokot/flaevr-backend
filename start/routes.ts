@@ -83,6 +83,7 @@ Route.group(() => {
 Route.group(() => {
   Route.get('/:idUser', 'ScannedsController.list');
   Route.get('/unique/:id', 'ScannedsController.index');
+  Route.get('/count/:idStamp', 'ScannedsController.countScannedsByIdStamp');
   Route.post('/post', 'ScannedsController.store');
   Route.put('/put/:id', 'ScannedsController.alter');
   Route.delete('/delete/:id', 'ScannedsController.remove');

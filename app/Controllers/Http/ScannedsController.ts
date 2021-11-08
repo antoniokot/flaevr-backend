@@ -30,6 +30,26 @@ export default class ScannedsController {
     return scann;
   }
 
+  public async countScannedsByIdStamp(ctx: HttpContextContract) {
+
+    const auth = ctx.auth;
+    const idStamp = ctx.request.params().idStamp;
+
+    let user = await auth.use('web').authenticate();
+
+    const scanneds = await Database
+      .query()
+      .from('Scanned')
+      .count('* as total')
+      .join('Product', 'Product.idProduct', '=', 'Scanned.idProduct')
+      .join('ProductStamp', 'ProductStamp.idProduct', '=', 'Product.idProduct')
+      .join('Stamp', 'Stamp.idStamp', '=', 'ProductStamp.idStamp')
+      .where('Stamp.idStamp', idStamp)
+      .andWhere('Scanned.idUser', user.idUser);
+
+    return scanneds;
+  }
+
   public async store(ctx: HttpContextContract) {
 
     const body = ctx.request.body();
