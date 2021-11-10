@@ -32,10 +32,8 @@ export default class ScannedsController {
 
   public async countScannedsByIdStamp(ctx: HttpContextContract) {
 
-    const auth = ctx.auth;
     const idStamp = ctx.request.params().idStamp;
-
-    let user = await auth.use('web').authenticate();
+    const idUser = ctx.request.params().idUser;
 
     const scanneds = await Database
       .query()
@@ -45,7 +43,7 @@ export default class ScannedsController {
       .join('ProductStamp', 'ProductStamp.idProduct', '=', 'Product.idProduct')
       .join('Stamp', 'Stamp.idStamp', '=', 'ProductStamp.idStamp')
       .where('Stamp.idStamp', idStamp)
-      .andWhere('Scanned.idUser', user.idUser);
+      .andWhere('Scanned.idUser', idUser);
 
     return scanneds;
   }
