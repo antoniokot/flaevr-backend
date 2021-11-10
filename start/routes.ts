@@ -33,6 +33,15 @@ Route.group(() => {
 .prefix('/users');
 
 Route.group(() => {
+  Route.get('', 'AdditionalInformationsController.list');
+  Route.get('/:id', 'AdditionalInformationsController.index')
+  Route.post('/post', 'AdditionalInformationsController.store');
+  Route.put('/put/:id', 'AdditionalInformationsController.alter');
+  Route.delete('/delete/:id', 'AdditionalInformationsController.remove');
+})
+.prefix('/additionalInformations');
+
+Route.group(() => {
   Route.get('/:idUser', 'FoldersController.list');
   Route.get('/unique/:id', 'FoldersController.index');
   Route.post('/post', 'FoldersController.store');
