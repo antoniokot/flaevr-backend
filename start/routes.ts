@@ -140,7 +140,7 @@ Route.group(() => {
 
 Route.group(() => {
   Route.get('', 'NutritionalFactsController.list');
-  Route.get('/:id', 'NutritionalFactsController.index');
+  Route.get('/product/:idProduct', 'NutritionalFactsController.index');
   Route.post('/post', 'NutritionalFactsController.store');
   Route.put('/put/:id', 'NutritionalFactsController.alter');
   Route.delete('/delete/:id', 'NutritionalFactsController.remove');

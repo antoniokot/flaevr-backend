@@ -16,13 +16,13 @@ export default class NutritionalFactsController {
 
   public async index(ctx: HttpContextContract) {
 
-    const id = ctx.request.params().id;
+    const idProduct = ctx.request.params().idProduct;
 
     const nutritionalFacts = await Database
       .query()
       .from('NutritionalFacts')
       .select('*')
-      .where('idNutritionalFacts', id);
+      .where('NutritionalFacts.idProduct', idProduct);
 
     return nutritionalFacts;
   }
