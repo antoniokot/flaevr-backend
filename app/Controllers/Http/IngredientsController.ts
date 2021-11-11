@@ -42,7 +42,7 @@ export default class IngredientsController {
       'Ingredient.hasMilk as hasMilk', 
       'Ingredient.hasEgg as hasEgg', 
       'Ingredient.hasGluten as hasGluten', 
-      'Ingredient.hasSeaFood as hasSeaFood', 
+      'Ingredient.hasSeafood as hasSeafood', 
       'Ingredient.hasFish as hasFish',
       'Ingredient.hasSugar as hasSugar',
       'Ingredient.hasSoy as hasSoy',

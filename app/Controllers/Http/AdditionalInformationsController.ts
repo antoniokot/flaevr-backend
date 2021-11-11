@@ -15,13 +15,20 @@ export default class AdditionalInformationsController {
 
   public async index(ctx: HttpContextContract) {
 
-    const id = ctx.request.params().id;
+    const idUser = ctx.request.params().idUser;
 
     const additionalInformation = await Database
       .query()
       .from('AdditionalInformation')
-      .select('*')
-      .where('idAdditionalInformation', id);
+      .join('User', 'User.idUser', '=', 'AdditionalInformation.idUser')
+      .select('AdditionalInformation.idUser as idUser')
+      .select('AdditionalInformation.age as age')
+      .select('AdditionalInformation.gender as gender')
+      .select('AdditionalInformation.af as af')
+      .select('AdditionalInformation.height as height')
+      .select('AdditionalInformation.weight as weight')
+      .select('AdditionalInformation.idealWeight as idealWeight')
+      .where('AdditionalInformation.idUser', idUser);
 
     return additionalInformation;
   }

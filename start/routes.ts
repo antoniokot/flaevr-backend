@@ -34,7 +34,7 @@ Route.group(() => {
 
 Route.group(() => {
   Route.get('', 'AdditionalInformationsController.list');
-  Route.get('/:id', 'AdditionalInformationsController.index')
+  Route.get('/user/:idUser', 'AdditionalInformationsController.index')
   Route.post('/post', 'AdditionalInformationsController.store');
   Route.put('/put/:id', 'AdditionalInformationsController.alter');
   Route.delete('/delete/:id', 'AdditionalInformationsController.remove');
