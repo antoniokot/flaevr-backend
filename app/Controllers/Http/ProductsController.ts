@@ -1,3 +1,4 @@
+import { HttpContext } from '@adonisjs/core/build/standalone';
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Database from '@ioc:Adonis/Lucid/Database';
 
@@ -100,6 +101,19 @@ export default class ProductsController {
       .where('Stamp.idStamp', idStamp);
 
     return scanneds;
+  }
+
+  public async trendings(ctx: HttpContextContract) {
+
+    const trendings = await Database
+    .rawQuery(`
+      select idProduct, COUNT(idProduct) AS MOST_FREQUENT
+      from Scanned
+      GROUP BY idProduct
+      ORDER BY COUNT(idProduct) DESC
+    `)
+
+    return trendings;
   }
 
   public async store(ctx: HttpContextContract) {

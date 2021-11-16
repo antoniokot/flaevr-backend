@@ -75,6 +75,7 @@ Route.group(() => {
   Route.get('/folder/:idFolder', 'ProductsController.getProductsByIdFolder');
   Route.get('/user/:idUser', 'ProductsController.recents');
   Route.get('/stamp/:idStamp', 'ProductsController.getAllScannedByIdStamp');
+  Route.get('/scann/trendings', 'ProductsController.trendings');
   Route.post('/post', 'ProductsController.store');
   Route.put('/put/:id', 'ProductsController.alter');
   Route.delete('/delete/:id', 'ProductsController.remove');
