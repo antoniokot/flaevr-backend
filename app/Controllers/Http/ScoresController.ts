@@ -172,6 +172,19 @@ export default class ScoresController {
     return score;
   }
 
+  public async getScoresByIdProduct(ctx: HttpContextContract) {
+
+    const idProduct = ctx.request.params().idProduct;
+
+    const score = await Database
+      .query()
+      .from('Score')
+      .select('*')
+      .where('Score.idProduct', '=', idProduct);
+
+    return score;
+  }
+
 
   public async alter (ctx: HttpContextContract) {
 

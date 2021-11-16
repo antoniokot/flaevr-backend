@@ -84,6 +84,7 @@ Route.group(() => {
 Route.group(() => {
   Route.get('', 'ScoresController.list');
   Route.get('/:id', 'ScoresController.index');
+  Route.get('/product/:idProduct', 'ScoresController.getScoresByIdProduct');
   Route.post('/post', 'ScoresController.store');
   Route.delete('/:id', 'ScoresController.remove');
 })
