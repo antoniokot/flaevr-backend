@@ -103,19 +103,6 @@ export default class ProductsController {
     return scanneds;
   }
 
-  public async trendings(ctx: HttpContextContract) {
-
-    const trendings = await Database
-    .rawQuery(`
-      select idProduct, COUNT(idProduct) AS MOST_FREQUENT
-      from Scanned
-      GROUP BY idProduct
-      ORDER BY COUNT(idProduct) DESC
-    `)
-
-    return trendings;
-  }
-
   public async store(ctx: HttpContextContract) {
 
     const body = ctx.request.body();

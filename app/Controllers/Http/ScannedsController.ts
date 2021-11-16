@@ -48,6 +48,23 @@ export default class ScannedsController {
     return scanneds;
   }
 
+  public async trendings(ctx: HttpContextContract) {
+
+    const trendings = await Database
+    .query()
+    .from('Scanned')
+    .join('Product', 'Product.idProduct', '=', 'Scanned.idProduct')
+    .select([
+      'Product.idProduct as idProduct',
+      'Product.name as name',
+      'Product.barcode as barcode',
+      'Product.pictureUrl as pictureUrl',
+    ])
+    .distinct('Product.idProduct')
+
+    return trendings;
+  }
+
   public async store(ctx: HttpContextContract) {
 
     const body = ctx.request.body();

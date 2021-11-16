@@ -75,7 +75,6 @@ Route.group(() => {
   Route.get('/folder/:idFolder', 'ProductsController.getProductsByIdFolder');
   Route.get('/user/:idUser', 'ProductsController.recents');
   Route.get('/stamp/:idStamp', 'ProductsController.getAllScannedByIdStamp');
-  Route.get('/scann/trendings', 'ProductsController.trendings');
   Route.post('/post', 'ProductsController.store');
   Route.put('/put/:id', 'ProductsController.alter');
   Route.delete('/delete/:id', 'ProductsController.remove');
@@ -94,6 +93,7 @@ Route.group(() => {
   Route.get('/:idUser', 'ScannedsController.list');
   Route.get('/unique/:id', 'ScannedsController.index');
   Route.get('/count/user/:idUser/stamp/:idStamp', 'ScannedsController.countScannedsByIdStamp');
+  Route.get('/product/trendings', 'ScannedsController.trendings');
   Route.post('/post', 'ScannedsController.store');
   Route.put('/put/:id', 'ScannedsController.alter');
   Route.delete('/delete/:id', 'ScannedsController.remove');
